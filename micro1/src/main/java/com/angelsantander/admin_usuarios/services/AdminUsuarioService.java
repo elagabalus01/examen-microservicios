@@ -46,7 +46,7 @@ public class AdminUsuarioService {
         Optional<User> user_to_update = Optional.empty();
         user_to_update = user_repo.findById(id);
         if (user_to_update.isPresent()){
-            user_repo.save(user_to_update.get();
+            user_repo.save(user_to_update.get());
             
             return user_to_update.get();
         }else{

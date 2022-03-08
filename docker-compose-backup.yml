@@ -8,20 +8,19 @@ services:
         - 5432:5432
       volumes:
         - ./blockstorage/postgres:/var/lib/postgresql/data
+  discovery-server:
+    image: discovery_server:0.0.1-SNAPSHOT
+    ports:
+      - 8761:8761
   usuarios:
     image: admin_usuarios:0.0.1-SNAPSHOT
     ports:
       - 8081:8081
     depends_on:
       - database-service
- 
   publicaciones:
     image: publicaciones:0.0.1-SNAPSHOT
     ports:
       - 8082:8082
     depends_on:
       - database-service
-  discovery-server:
-    image: discovery_server:0.0.1-SNAPSHOT
-    ports:
-      - 8761:8761
