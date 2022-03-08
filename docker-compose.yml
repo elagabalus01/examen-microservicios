@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  discovery-server:
+    image: discovery_server:0.0.1-SNAPSHOT
+    ports:
+      - 8761:8761
+    network_mode: "host"
+  usuarios:
+    image: admin_usuarios:0.0.1-SNAPSHOT
+    ports:
+      - "8081:8081"
+    network_mode: "host"
+  publicaciones:
+    image: publicaciones:0.0.1-SNAPSHOT
+    ports:
+      - "8082:8082"
+    network_mode: "host"
