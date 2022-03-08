@@ -6,7 +6,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/admin_usuarios
   application:
     name: admin_usuarios
-
+  jpa:
+    hibernate.ddl-auto: create
 eureka:
   client:
     serviceUrl:

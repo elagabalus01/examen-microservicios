@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "1f445ffb-6e6e-42a8-a13f-5dfbca845ee3",
+		"name": "examen-microservicios",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuario",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"Angel\",\n    \"paterno\":\"Santander\",\n    \"materno\":\"Martinez\",\n    \"correo\":\"angelsantander609@gmail.com\",\n    \"contrasenia\":\"unodostres\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/usuario/registro",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"registro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"Angel\",\n    \"paterno\":\"Santander\",\n    \"materno\":\"Martinez\",\n    \"correo\":\"angelsantander609@gmail.com\",\n    \"contrasenia\":\"unodostres\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/v1/usuario/registro",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"registro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "publicaciones=by=userid-remote",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/v1/usuario/pubs/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"pubs",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "publicaciones",
+			"item": [
+				{
+					"name": "New Request",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    contenido:\"Hola mudno\"\n}",
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/v1/publicaciones/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"publicaciones",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "publicacion-by-user-id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    contenido:\"Hola mudno\"\n}",
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8082/api/v1/publicaciones/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"publicaciones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
