@@ -68,4 +68,9 @@ public class AdminUsuarioController {
 		return response;
 	}
 
+	@PostMapping("/{id}/publicar")
+	public String publicar(@RequestBody String contenido, @PathVariable int id){
+		user_service.publicar(contenido);
+		return "Mensaje enviado";
+	}
 }

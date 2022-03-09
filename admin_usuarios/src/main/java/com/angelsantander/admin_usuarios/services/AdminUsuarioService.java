@@ -16,6 +16,8 @@ import com.angelsantander.admin_usuarios.entity.User;
 import com.angelsantander.admin_usuarios.models.remote.Publicacion;
 import com.angelsantander.admin_usuarios.services.remote.PublicacionesRemoteService;
 
+import com.angelsantander.admin_usuarios.services.remote.PublicacionesProducer;
+
 @Service
 public class AdminUsuarioService {
     @Autowired
@@ -23,6 +25,12 @@ public class AdminUsuarioService {
     
     @Autowired
     private  PublicacionesRemoteService pub_remote;
+
+    private PublicacionesProducer pub_producer;
+
+    public AdminUsuarioService(PublicacionesProducer pub_producer){
+        this.pub_producer = pub_producer;
+    }
 
     public void agregar(User new_user){
 
@@ -58,4 +66,7 @@ public class AdminUsuarioService {
         return pub_remote.getPublicaciones(id);
     }
 
+    public void publicar(String contenido){
+        pub_producer.sendMessage(contenido);
+    }
 }

@@ -1,4 +1,4 @@
-docker-compose down
+docker-compose down --remove-orphans
 cd admin_usuarios
 ./build-image.sh
 cd ..
