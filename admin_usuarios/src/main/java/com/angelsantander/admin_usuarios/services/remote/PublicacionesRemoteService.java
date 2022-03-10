@@ -11,7 +11,7 @@ import java.util.List;
 import com.angelsantander.admin_usuarios.models.remote.Publicacion;
 
 @Service
-@FeignClient(name = "publicaciones", url="10.112.209.96:8082")
+@FeignClient(name = "publicaciones", url="publicaciones:8082")
 public interface PublicacionesRemoteService {
     @RequestMapping(method = POST, value = "/api/v1/publicaciones/{id}", produces = "application/json")
     List<Publicacion> getPublicaciones(@PathVariable int id);

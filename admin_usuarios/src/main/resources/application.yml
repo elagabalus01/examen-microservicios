@@ -4,8 +4,6 @@ spring:
     username: admin
     password: admin
     url: jdbc:postgresql://database-service:5432/admin_usuarios
-  jpa:
-    hibernate.ddl-auto: create
   application:
     name: admin_usuarios
   boot:

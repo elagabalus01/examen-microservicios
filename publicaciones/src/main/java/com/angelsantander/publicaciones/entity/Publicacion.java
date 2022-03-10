@@ -13,6 +13,9 @@ public class Publicacion {
     public int id;
 
     @Column
+    public int user_id;
+    
+    @Column
     public String contenido;
 
     @Column

@@ -4,14 +4,11 @@ spring:
     username: admin
     password: admin
     url:  jdbc:postgresql://database-service:5432/publicaciones
-  jpa:
-    hibernate.ddl-auto: create
   application:
     name: publicaciones
   boot:
       admin:
          url: http://monitoring-server:8086/
-  
 
 eureka:
   client:
