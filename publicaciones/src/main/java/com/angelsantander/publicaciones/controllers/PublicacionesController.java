@@ -15,6 +15,8 @@ import com.angelsantander.publicaciones.services.PublicacionesService;
 
 import java.util.List;
 
+import com.angelsantander.publicaciones.models.PublicacionDto;
+
 @RestController
 @RequestMapping("api/v1/publicaciones")
 public class PublicacionesController {
@@ -23,27 +25,23 @@ public class PublicacionesController {
     private PublicacionesService pub_service;
 
     @PostMapping("/create")
-    public Map<String, String> crear(@RequestBody String contenido){
-        Map<String, String> reponse = new HashMap<>();
-        Publicacion new_pub = new Publicacion(contenido);
+    public Map<String, Object> crear(@RequestBody PublicacionDto nueva_publicacion){
+        Map<String, Object> reponse = new HashMap<>();
+        Publicacion new_pub = new Publicacion(nueva_publicacion);
         pub_service.guardar(new_pub);
-        reponse.put("Hola", "Mundo");
+        reponse.put("status", "200");
+        reponse.put("data", "Publicando: "+nueva_publicacion);
         return reponse;
     }
 
 
     @PostMapping("/{id}")
-    public List<Publicacion> publicaciones(@PathVariable int id){
-        List<Publicacion> resultados = new ArrayList<>();
-        Publicacion pub_aux = new Publicacion("Homa mudno");
-        System.out.println(pub_aux);
-
-        resultados.add(pub_aux);
-        pub_aux = new Publicacion("Hola mundo 2");
-        resultados.add(pub_aux);
-        pub_aux = new Publicacion("Hola mundo 3");
-        resultados.add(pub_aux);
-        return resultados;
+    public Map<String,Object> publicaciones(@PathVariable int id){
+    	Map<String, Object> response = new HashMap<>();
+        List<Publicacion> resultados = pub_service.publicaciones_user(id);
+        response.put("status","200");
+        response.put("data",resultados);
+        return response;
     }
 
 }

@@ -1,6 +1,7 @@
 package com.angelsantander.admin_usuarios.services;
 
 import com.netflix.discovery.converters.Auto;
+
 import com.thoughtworks.xstream.mapper.Mapper.Null;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import com.angelsantander.admin_usuarios.repository.UserRepository;
 
 import java.util.Optional;
 import java.util.List;
+import java.util.ArrayList;
 
 import com.angelsantander.admin_usuarios.entity.User;
 import com.angelsantander.admin_usuarios.models.remote.Publicacion;
@@ -55,7 +57,6 @@ public class AdminUsuarioService {
         user_to_update = user_repo.findById(id);
         if (user_to_update.isPresent()){
             user_repo.save(user_to_update.get());
-            
             return user_to_update.get();
         }else{
             return null;
@@ -63,10 +64,16 @@ public class AdminUsuarioService {
     }
 
     public List<Publicacion> publicaciones(int id){
-        return pub_remote.getPublicaciones(id);
+        return pub_remote.getPublicaciones(id).getData();
     }
 
     public void publicar(String contenido){
         pub_producer.sendMessage(contenido);
+    }
+
+    public List<User> todos(){
+    	List<User> todos = new ArrayList<>();
+        user_repo.findAll().forEach(todos::add);
+        return todos;
     }
 }

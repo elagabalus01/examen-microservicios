@@ -1,5 +1,9 @@
 package com.angelsantander.publicaciones.services.remote;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
@@ -7,7 +11,12 @@ import org.springframework.stereotype.Component;
 import com.angelsantander.publicaciones.configuraciones.RabbitMQConfig;
 
 import com.angelsantander.publicaciones.services.PublicacionesService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.angelsantander.publicaciones.entity.Publicacion;
+
+import com.angelsantander.publicaciones.models.PublicacionDto;
 
 @Component
 public class PublicacionesConsumer {
@@ -18,9 +27,13 @@ public class PublicacionesConsumer {
     }
 
     @RabbitListener(queues = RabbitMQConfig.QUEUE_PUBLICACIONES)
-    public void listenConfirmaciones(Message message) {
+    public void listenConfirmaciones(Message message) throws JsonMappingException, JsonProcessingException {
         String contenido = new String(message.getBody());
-        Publicacion new_pub = new Publicacion(contenido);
+        System.out.println(contenido);
+        PublicacionDto new_post;
+        ObjectMapper mapper = new ObjectMapper();
+        new_post = mapper.readValue(contenido, PublicacionDto.class);
+        Publicacion new_pub = new Publicacion(new_post);
         pub_service.guardar(new_pub);
     }
 }

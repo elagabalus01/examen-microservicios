@@ -41,6 +41,54 @@ public class User {
 		this.contrasenia = contrasenia;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getPaterno() {
+		return paterno;
+	}
+
+	public void setPaterno(String paterno) {
+		this.paterno = paterno;
+	}
+
+	public String getMaterno() {
+		return materno;
+	}
+
+	public void setMaterno(String materno) {
+		this.materno = materno;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+
 	public static User fromUserDto(UserDto user){
 		User recover_user = new User(user.nombre,user.paterno,user.materno,user.correo,user.contrasenia);
 

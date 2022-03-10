@@ -5,26 +5,26 @@ services:
       environment:
         - POSTGRES_PASSWORD=secret
       ports:
-        - 5432:5432
+        - 127.0.0.1:5432:5432
       volumes:
         - ./blockstorage/postgres:/var/lib/postgresql/data
   micro:
     image: ${micro}:0.0.1-SNAPSHOT
     ports:
-      - 8081:8081
+      - 127.0.0.1:8081:8081
     depends_on:
       - database-service
   discovery-server:
     image: discovery_server:0.0.1-SNAPSHOT
     ports:
-      - 8761:8761
+      - 127.0.0.1:8761:8761
   monitoring-server:
     image: server-metrics:0.0.1-SNAPSHOT
     ports:
-      - 8086:8086
+      - 127.0.0.1:8086:8086
   
   rabbitmq:
     image: rabbitmq:3.6.12-management-alpine
     ports:
-      - 15672:15672
-      - 5672:5672
+      - 127.0.0.1:15672:15672
+      - 127.0.0.1:5672:5672

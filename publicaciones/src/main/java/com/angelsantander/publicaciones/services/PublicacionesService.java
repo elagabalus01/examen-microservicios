@@ -1,5 +1,8 @@
 package com.angelsantander.publicaciones.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +19,10 @@ public class PublicacionesService {
     }
     
 
+    public List<Publicacion> publicaciones_user(int id){
+    	List<Publicacion> publicaciones = new ArrayList<>();
+    	publicacion_repo.findUserPubs(id).forEach(publicaciones::add);
+        return publicaciones;
+    }
     
 }
