@@ -19,7 +19,7 @@ services:
       - ./blockstorage/postgres:/var/lib/postgresql/data
     networks:
       red-social:
-        ipv4_address: 192.168.2.7
+        ipv4_address: 192.168.2.10
   usuarios:
     image: admin_usuarios:0.0.1-SNAPSHOT
     ports:
@@ -40,13 +40,43 @@ services:
       red-social:
         ipv4_address: 192.168.2.3
 
+  seguidores:
+    image: seguidores:0.0.1-SNAPSHOT
+    ports:
+      - 8083:8083
+    depends_on:
+      - database-service
+    networks:
+      red-social:
+        ipv4_address: 192.168.2.4
+
+  comentarios:
+    image: comentarios:0.0.1-SNAPSHOT
+    ports:
+      - 8084:8084
+    depends_on:
+      - database-service
+    networks:
+      red-social:
+        ipv4_address: 192.168.2.5
+  
+  mensajes:
+    image: mensajes:0.0.1-SNAPSHOT
+    ports:
+      - 8085:8085
+    depends_on:
+      - database-service
+    networks:
+      red-social:
+        ipv4_address: 192.168.2.6
+
   discovery-server:
     image: discovery_server:0.0.1-SNAPSHOT
     ports:
       - 8761:8761
     networks:
       red-social:
-        ipv4_address: 192.168.2.4
+        ipv4_address: 192.168.2.7
   
   monitoring-server:
     image: server-metrics:0.0.1-SNAPSHOT
@@ -54,7 +84,7 @@ services:
       - 8086:8086
     networks:
       red-social:
-        ipv4_address: 192.168.2.5
+        ipv4_address: 192.168.2.8
   
   rabbitmq:
     image: rabbitmq:3.6.12-management-alpine
@@ -63,4 +93,4 @@ services:
       - 5672:5672
     networks:
       red-social:
-        ipv4_address: 192.168.2.6
+        ipv4_address: 192.168.2.9

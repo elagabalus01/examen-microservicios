@@ -3,12 +3,13 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: admin
     password: admin
-    url:  jdbc:postgresql://database-service:5432/publicaciones
+    url:  jdbc:postgresql://database-service:5432/mensajes
   application:
-    name: publicaciones
+    name: mensajes
   boot:
       admin:
          url: http://monitoring-server:8086/
+  
   rabbitmq:
     host:
       rabbitmq
@@ -31,4 +32,4 @@ eureka:
       instanceId: ${instance.id}
  
 server:
-  port: 8082
+  port: 8085

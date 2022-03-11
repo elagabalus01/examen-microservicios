@@ -3,9 +3,9 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: admin
     password: admin
-    url:  jdbc:postgresql://database-service:5432/publicaciones
+    url: jdbc:postgresql://database-service:5432/comentarios
   application:
-    name: publicaciones
+    name: comentarios
   boot:
       admin:
          url: http://monitoring-server:8086/
@@ -17,7 +17,7 @@ spring:
       guest
     password:
       guest
-
+ 
 eureka:
   client:
     serviceUrl:
@@ -29,6 +29,6 @@ eureka:
     leaseExpirationDurationInSeconds: 2
     metadata-map:
       instanceId: ${instance.id}
- 
+
 server:
-  port: 8082
+  port: 8084

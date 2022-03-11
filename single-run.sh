@@ -10,6 +10,13 @@ then
 	echo "Ingresa el nombre del micro a ejecutar"
 	exit
 fi
+
+if [[ ! -d "./$1" ]]
+then
+	echo "No se encontro la carpeta del micro seleccionado"
+	exit
+fi
+
 ./networkdown.sh
 docker-compose down --remove-orphans
 
