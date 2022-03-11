@@ -34,7 +34,6 @@ public class PublicacionesController {
         return reponse;
     }
 
-
     @PostMapping("/{id}")
     public Map<String,Object> publicaciones(@PathVariable int id){
     	Map<String, Object> response = new HashMap<>();

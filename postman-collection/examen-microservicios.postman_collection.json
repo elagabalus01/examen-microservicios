@@ -9,6 +9,31 @@
 			"name": "usuario",
 			"item": [
 				{
+					"name": "all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.2.2:8081/api/v1/usuario/",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"2"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "create",
 					"request": {
 						"method": "POST",
@@ -23,9 +48,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/api/v1/usuario/registro",
+							"raw": "http://192.168.2.2:8081/api/v1/usuario/registro",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"2",
+								"2"
 							],
 							"port": "8081",
 							"path": [
@@ -41,7 +70,7 @@
 				{
 					"name": "delete",
 					"request": {
-						"method": "POST",
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -53,30 +82,39 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/api/v1/usuario/registro",
+							"raw": "http://192.168.2.2:8081/api/v1/usuario/eliminar/3",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"2",
+								"2"
 							],
 							"port": "8081",
 							"path": [
 								"api",
 								"v1",
 								"usuario",
-								"registro"
+								"eliminar",
+								"3"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "publicaciones=by=userid-remote",
+					"name": "publicaciones-by-userid-remote",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:8081/api/v1/usuario/pubs/1",
+							"raw": "http://192.168.2.2:8081/api/v1/usuario/pubs/1",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"2",
+								"2"
 							],
 							"port": "8081",
 							"path": [
@@ -89,6 +127,41 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "publicar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contenido\":\"Por que no se publica eeee\",\n    \"user_id\":3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.2.2:8081/api/v1/usuario/1/publicar",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"2"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"1",
+								"publicar"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -96,34 +169,27 @@
 			"name": "publicaciones",
 			"item": [
 				{
-					"name": "New Request",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
+					"name": "crear publicacion",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    contenido:\"Hola mudno\"\n}",
+							"raw": "{\n    \"contenido\":\"Hola mundo x4\",\n    \"user_id\":\"1\"\n}",
 							"options": {
 								"raw": {
-									"language": "javascript"
+									"language": "json"
 								}
 							}
 						},
 						"url": {
-							"raw": "localhost:8082/api/v1/publicaciones/create",
+							"raw": "http://192.168.2.3:8082/api/v1/publicaciones/create",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"2",
+								"3"
 							],
 							"port": "8082",
 							"path": [
@@ -152,19 +218,14 @@
 					"request": {
 						"method": "POST",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    contenido:\"Hola mudno\"\n}",
-							"options": {
-								"raw": {
-									"language": "javascript"
-								}
-							}
-						},
 						"url": {
-							"raw": "localhost:8082/api/v1/publicaciones/1",
+							"raw": "http://192.168.2.3:8082/api/v1/publicaciones/1",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"2",
+								"3"
 							],
 							"port": "8082",
 							"path": [
@@ -186,6 +247,38 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "usuario_ip",
+			"value": "http://172.18.0.6:8081",
+			"type": "string"
+		},
+		{
+			"key": "publicacion_ip",
+			"value": "http://172.18.0.7:8082",
+			"type": "string"
 		}
 	]
 }

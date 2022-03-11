@@ -1,19 +1,34 @@
 version: '3.3'
+
+networks:
+    red-social:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+              - subnet: 192.168.2.0/24
+
 services:
   database-service:
-      build: database-service
-      environment:
-        - POSTGRES_PASSWORD=secret
-      ports:
-        - 5432:5432
-      volumes:
-        - ./blockstorage/postgres:/var/lib/postgresql/data
+    build: database-service
+    environment:
+      - POSTGRES_PASSWORD=secret
+    ports:
+      - 5432:5432
+    volumes:
+      - ./blockstorage/postgres:/var/lib/postgresql/data
+    networks:
+      red-social:
+        ipv4_address: 192.168.2.7
   usuarios:
     image: admin_usuarios:0.0.1-SNAPSHOT
     ports:
       - 8081:8081
     depends_on:
       - database-service
+    networks:
+      red-social:
+        ipv4_address: 192.168.2.2
  
   publicaciones:
     image: publicaciones:0.0.1-SNAPSHOT
@@ -21,17 +36,31 @@ services:
       - 8082:8082
     depends_on:
       - database-service
+    networks:
+      red-social:
+        ipv4_address: 192.168.2.3
+
   discovery-server:
     image: discovery_server:0.0.1-SNAPSHOT
     ports:
       - 8761:8761
+    networks:
+      red-social:
+        ipv4_address: 192.168.2.4
+  
   monitoring-server:
     image: server-metrics:0.0.1-SNAPSHOT
     ports:
       - 8086:8086
+    networks:
+      red-social:
+        ipv4_address: 192.168.2.5
   
   rabbitmq:
     image: rabbitmq:3.6.12-management-alpine
     ports:
       - 15672:15672
       - 5672:5672
+    networks:
+      red-social:
+        ipv4_address: 192.168.2.6
