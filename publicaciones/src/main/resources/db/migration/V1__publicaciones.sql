@@ -7,7 +7,7 @@ CREATE TABLE public.publicacion (
 );
 
 insert into publicacion(contenido, "timestamp", user_id)
-VALUES('Gracias a dios es viernes',now(), 1),
-('Trabajando duro o durando en el trabajo',now(),2),
-('Doy clases los jueves',now(),2),
-('Hola mundo',now(),1);
+VALUES('Gracias a dios es viernes',to_char(now(),'yyyy-MM-dd HH:mm:ss'), 1),
+('Trabajando duro o durando en el trabajo',to_char(now(),'yyyy-MM-dd HH:mm:ss'),2),
+('Doy clases los jueves',to_char(now(),'yyyy-MM-dd HH:mm:ss'),2),
+('Hola mundo',to_char(now(),'yyyy-MM-dd HH:mm:ss'),1);

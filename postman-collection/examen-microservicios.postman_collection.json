@@ -135,7 +135,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"contenido\":\"Por que no se publica eeee\",\n    \"user_id\":3\n}",
+							"raw": "{\n    \"contenido\":\"Este es un saludo para la mimosa\",\n    \"user_id\":1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -243,6 +243,96 @@
 					"request": {
 						"method": "GET",
 						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "seguidores",
+			"item": [
+				{
+					"name": "getSeguidores",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.2.4:8083/api/v1/seguidores/2",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"4"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"seguidores",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comentarios",
+			"item": [
+				{
+					"name": "comentarios de publicacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.2.5:8084/api/v1/comentarios/1",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"5"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"v1",
+								"comentarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "mensajes",
+			"item": [
+				{
+					"name": "prueba",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.2.6:8085/api/v1/mensajes/1",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"6"
+							],
+							"port": "8085",
+							"path": [
+								"api",
+								"v1",
+								"mensajes",
+								"1"
+							]
+						}
 					},
 					"response": []
 				}
