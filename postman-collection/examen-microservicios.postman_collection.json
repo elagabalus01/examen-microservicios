@@ -40,7 +40,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nombre\":\"Angel\",\n    \"paterno\":\"Santander\",\n    \"materno\":\"Martinez\",\n    \"correo\":\"angelsantander609@gmail.com\",\n    \"contrasenia\":\"unodostres\"\n\n}",
+							"raw": "{\n    \"nombre\":\"Nuevo usuario\",\n    \"paterno\":\"xxxxx\",\n    \"materno\":\"xxxxx\",\n    \"correo\":\"usuarionuevo@gmail.com\",\n    \"contrasenia\":\"tretrestres\"\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -135,7 +135,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"contenido\":\"Este es un saludo para la mimosa\",\n    \"user_id\":1\n}",
+							"raw": "{\n    \"contenido\":\"Esta publicacion se encola\",\n    \"user_id\":2\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -158,6 +158,74 @@
 								"usuario",
 								"1",
 								"publicar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lista usuarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ids_list\":[1,2]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.2.2:8081/api/v1/usuario/lista_usuarios",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"2"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"lista_usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comentar pub",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contenido\":\"este es un nuevo comentario encolado\",\n    \"id_usuario\":1,\n    \"id_publicacion\":2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.2.2:8081/api/v1/usuario/comentar_publicacion",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"2"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"usuario",
+								"comentar_publicacion"
 							]
 						}
 					},
@@ -239,10 +307,28 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "comentarios",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.2.3:8082/api/v1/publicaciones/1/comentarios",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"3"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"publicaciones",
+								"1",
+								"comentarios"
+							]
+						}
 					},
 					"response": []
 				}
@@ -275,6 +361,32 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getSeguidoresCompleto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.2.4:8083/api/v1/seguidores/2/datos",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"4"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"seguidores",
+								"2",
+								"datos"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -287,7 +399,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://192.168.2.5:8084/api/v1/comentarios/1",
+							"raw": "http://192.168.2.5:8084/api/v1/comentarios/2",
 							"protocol": "http",
 							"host": [
 								"192",
@@ -300,6 +412,41 @@
 								"api",
 								"v1",
 								"comentarios",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comentar publicacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contenido\":\"Este es un comentarios\",\n    \"id_usuario\":1,\n    \"id_publicacion\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.2.5:8084/api/v1/comentarios/crear/1",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"2",
+								"5"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"v1",
+								"comentarios",
+								"crear",
 								"1"
 							]
 						}
@@ -312,7 +459,7 @@
 			"name": "mensajes",
 			"item": [
 				{
-					"name": "prueba",
+					"name": "todos los mensajes",
 					"request": {
 						"method": "POST",
 						"header": [],
