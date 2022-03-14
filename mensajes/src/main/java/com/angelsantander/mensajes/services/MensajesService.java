@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import com.angelsantander.mensajes.entities.Mensaje;
 import com.angelsantander.mensajes.repositories.MensajeRepository;
 
@@ -13,10 +16,14 @@ import com.angelsantander.mensajes.repositories.MensajeRepository;
 public class MensajesService {
 	@Autowired
 	private MensajeRepository mensajes_repo;
+	@Autowired
+	EntityManager manager;
 	
 	public List<Mensaje> getMensajes(){
 		List<Mensaje> mensajes = new ArrayList<>();
+		mensajes_repo.findAll().forEach(mensajes::add);
 		return mensajes;
 	}
+	
 	
 }

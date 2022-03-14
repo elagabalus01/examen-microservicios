@@ -11,6 +11,7 @@ networks:
 services:
   database-service:
     build: database-service
+    image: angelsantander/database-service:0.1
     environment:
       - POSTGRES_PASSWORD=secret
     ports:
@@ -20,8 +21,9 @@ services:
     networks:
       red-social:
         ipv4_address: 192.168.2.10
+    container_name: database
   usuarios:
-    image: admin_usuarios:0.0.1-SNAPSHOT
+    image: angelsantander/admin_usuarios:0.0.1-SNAPSHOT
     ports:
       - 8081:8081
     depends_on:
@@ -29,9 +31,10 @@ services:
     networks:
       red-social:
         ipv4_address: 192.168.2.2
+    container_name: usuarios
  
   publicaciones:
-    image: publicaciones:0.0.1-SNAPSHOT
+    image: angelsantander/publicaciones:0.0.1-SNAPSHOT
     ports:
       - 8082:8082
     depends_on:
@@ -39,9 +42,10 @@ services:
     networks:
       red-social:
         ipv4_address: 192.168.2.3
+    container_name: publicaciones
 
   seguidores:
-    image: seguidores:0.0.1-SNAPSHOT
+    image: angelsantander/seguidores:0.0.1-SNAPSHOT
     ports:
       - 8083:8083
     depends_on:
@@ -49,9 +53,10 @@ services:
     networks:
       red-social:
         ipv4_address: 192.168.2.4
+    container_name: seguidores
 
   comentarios:
-    image: comentarios:0.0.1-SNAPSHOT
+    image: angelsantander/comentarios:0.0.1-SNAPSHOT
     ports:
       - 8084:8084
     depends_on:
@@ -59,9 +64,10 @@ services:
     networks:
       red-social:
         ipv4_address: 192.168.2.5
+    container_name: comentarios
   
   mensajes:
-    image: mensajes:0.0.1-SNAPSHOT
+    image: angelsantander/mensajes:0.0.1-SNAPSHOT
     ports:
       - 8085:8085
     depends_on:
@@ -69,9 +75,10 @@ services:
     networks:
       red-social:
         ipv4_address: 192.168.2.6
+    container_name: mensajes
 
   discovery-server:
-    image: discovery_server:0.0.1-SNAPSHOT
+    image: angelsantander/discovery_server:0.0.1-SNAPSHOT
     ports:
       - 8761:8761
     networks:
@@ -79,7 +86,7 @@ services:
         ipv4_address: 192.168.2.7
   
   monitoring-server:
-    image: server-metrics:0.0.1-SNAPSHOT
+    image: angelsantander/server-metrics:0.0.1-SNAPSHOT
     ports:
       - 8086:8086
     networks:

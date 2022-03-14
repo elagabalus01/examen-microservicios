@@ -1,8 +1,11 @@
 package com.angelsantander.mensajes.controllers;
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +20,12 @@ public class MensajeController {
 	private MensajesService mensajes_service;
 	
 	@PostMapping("/{user_id}")
-	public List<Mensaje> todosLosMensajes(){
+	public Map<String,Object> todosLosMensajes(){
+		Map<String, Object> response = new HashMap<>();
 		List<Mensaje> mensajes = mensajes_service.getMensajes();
-		return mensajes;
+		response.put("status","200");
+		response.put("data",mensajes);
+		return response;
 	}
+	
 }

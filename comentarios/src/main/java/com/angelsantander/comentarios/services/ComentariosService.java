@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.angelsantander.comentarios.repositories.ComentariosRepository;
 import com.angelsantander.comentarios.entities.Comentario;
+import com.angelsantander.comentarios.models.ComentarioDto;
 
 @Service
 public class ComentariosService {
@@ -14,5 +15,11 @@ public class ComentariosService {
 	
 	public List<Comentario> pub_coments(int publication_id){
 		return coment_repo.getAllComentarios(publication_id);
+	}
+	
+	public Comentario crearComentario(ComentarioDto nuevo_comentario) {
+		Comentario comentario = new Comentario(nuevo_comentario);  
+		coment_repo.save(comentario);
+		return comentario;
 	}
 }

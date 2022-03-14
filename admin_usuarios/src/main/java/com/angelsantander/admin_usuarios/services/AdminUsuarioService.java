@@ -19,6 +19,9 @@ import com.angelsantander.admin_usuarios.models.remote.Publicacion;
 import com.angelsantander.admin_usuarios.services.remote.PublicacionesRemoteService;
 
 import com.angelsantander.admin_usuarios.services.remote.PublicacionesProducer;
+import com.angelsantander.admin_usuarios.services.remote.ComentariosProducer;
+import com.angelsantander.admin_usuarios.models.remote.ComentarioDto;
+
 
 @Service
 public class AdminUsuarioService {
@@ -27,11 +30,15 @@ public class AdminUsuarioService {
     
     @Autowired
     private  PublicacionesRemoteService pub_remote;
+    
+    
+    private  ComentariosProducer comentario_producer;
 
     private PublicacionesProducer pub_producer;
 
-    public AdminUsuarioService(PublicacionesProducer pub_producer){
+    public AdminUsuarioService(PublicacionesProducer pub_producer, ComentariosProducer comentario_producer){
         this.pub_producer = pub_producer;
+        this.comentario_producer = comentario_producer;
     }
 
     public void agregar(User new_user){
@@ -63,8 +70,17 @@ public class AdminUsuarioService {
         }
     }
 
+    public Iterable<User> lista_usuarios(List<Integer> ids){
+        return user_repo.findAllById(ids);
+    }
+    
     public List<Publicacion> publicaciones(int id){
         return pub_remote.getPublicaciones(id).getData();
+    }
+
+    public void comentar_publicacion(String comentario){
+        comentario_producer.sendMessage(comentario);
+        return;
     }
 
     public void publicar(String contenido){

@@ -6,3 +6,10 @@ CREATE TABLE public.mensaje (
 	"timestamp" varchar(255) NULL,
 	CONSTRAINT mensaje_pkey PRIMARY KEY (id)
 );
+
+insert into mensaje
+(contenido,id_user_reciver,id_user_sender,"timestamp")
+values
+('Hola',1,2,to_char(now(),'yyyy-MM-dd HH:mm:ss')),
+('Hola, Como andas?',2,1,to_char(now(),'yyyy-MM-dd HH:mm:ss')),
+('aka cotorriando',1,2,to_char(now(),'yyyy-MM-dd HH:mm:ss'));

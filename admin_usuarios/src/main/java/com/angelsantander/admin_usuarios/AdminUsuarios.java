@@ -6,6 +6,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 
 @SpringBootApplication
 @EnableFeignClients
@@ -16,5 +17,7 @@ public class AdminUsuarios {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AdminUsuarios.class, args);
+		CircuitBreakerConfig config = CircuitBreakerConfig.ofDefaults();
+
 	}
 }

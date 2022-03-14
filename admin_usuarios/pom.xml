@@ -12,7 +12,7 @@
 	<artifactId>admin_usuarios</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>AdminUsuarios</name>
-	<description>Esto es una prueba</description>
+	<description>Micro servicio para la administracion de usuarios de la red social</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>2021.0.1</spring-cloud.version>
@@ -106,6 +106,9 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<mainClass>com.angelsantander.admin_usuarios.AdminUsuarios</mainClass>
+					<image>
+                        <name>angelsantander/${project.artifactId}:${project.version}</name>
+                    </image>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.angelsantander.publicaciones.entity.Publicacion;
 import com.angelsantander.publicaciones.services.PublicacionesService;
+import com.angelsantander.publicaciones.models.remote.Comentario;
 
 import java.util.List;
 
@@ -41,6 +42,16 @@ public class PublicacionesController {
         response.put("status","200");
         response.put("data",resultados);
         return response;
+    }
+    
+    @PostMapping("/{id}/comentarios")
+    public Map<String, Object> getComents(@PathVariable int id){
+    	Map<String, Object> response = new HashMap<>();
+    	List<Comentario> comentarios;
+    	comentarios = pub_service.getPubComents(id);
+    	response.put("status","200");
+    	response.put("data",comentarios);
+    	return response;
     }
 
 }

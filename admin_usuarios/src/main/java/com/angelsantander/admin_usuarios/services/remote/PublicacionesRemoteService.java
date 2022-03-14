@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import com.angelsantander.admin_usuarios.models.remote.Publicacion;
 
+
 import com.angelsantander.admin_usuarios.models.Response;
+import com.angelsantander.admin_usuarios.services.remote.PublicacionesRemoteFallback;
 
 @Service
-@FeignClient(name = "publicaciones", url="publicaciones:8082")
+@FeignClient(name = "publicaciones", url="publicaciones:8082",fallback = PublicacionesRemoteFallback.class )
 public interface PublicacionesRemoteService {
     @RequestMapping(method = POST, value = "/api/v1/publicaciones/{id}", produces = "application/json")
     Response<List<Publicacion>> getPublicaciones(@PathVariable int id);

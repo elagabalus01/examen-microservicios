@@ -6,11 +6,12 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 192.168.2.0/24
+        - subnet: 192.168.3.0/24
 
 services:
   database-service:
     build: database-service
+    image: angelsantander/database-service:0.1
     environment:
       - POSTGRES_PASSWORD=secret
     ports:
@@ -21,7 +22,7 @@ services:
       red-micro-servicio:
         ipv4_address: 192.168.2.7
   micro:
-    image: ${micro}:0.0.1-SNAPSHOT
+    image: angelsantander/${micro}:0.0.1-SNAPSHOT
     ports:
       - 127.0.0.1:8081:8081
     depends_on:
@@ -30,14 +31,14 @@ services:
       red-micro-servicio:
         ipv4_address: 192.168.2.2
   discovery-server:
-    image: discovery_server:0.0.1-SNAPSHOT
+    image: angelsantander/discovery_server:0.0.1-SNAPSHOT
     ports:
       - 127.0.0.1:8761:8761
     networks:
       red-micro-servicio:
         ipv4_address: 192.168.2.3
   monitoring-server:
-    image: server-metrics:0.0.1-SNAPSHOT
+    image: angelsantander/server-metrics:0.0.1-SNAPSHOT
     ports:
       - 127.0.0.1:8086:8086
     networks:

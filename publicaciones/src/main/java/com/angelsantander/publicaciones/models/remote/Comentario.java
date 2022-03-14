@@ -1,35 +1,14 @@
-package com.angelsantander.comentarios.entities;
+package com.angelsantander.publicaciones.models.remote;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-import com.angelsantander.comentarios.models.ComentarioDto;
-
-import javax.persistence.GenerationType;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-@Entity
 public class Comentario {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column
+
 	private String contenido;
-	
-	@Column
+
 	private int id_usuario;
 	
-	@Column
 	private int id_publicacion;
 	
-	@Column
 	private String datetime;
 
 	public int getId() {
@@ -80,14 +59,7 @@ public class Comentario {
 		this.id_publicacion = id_publicacion;
 		this.datetime = datetime;
 	}
-	
-	public Comentario(ComentarioDto dto) {
-		this.contenido = dto.getContenido();
-		this.id_usuario = dto.getId_usuario();
-		this.id_publicacion = dto.getId_publicacion();
-		this.datetime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-	}
-	
+
 	public Comentario() {
 		super();
 	}

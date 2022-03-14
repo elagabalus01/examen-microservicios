@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.angelsantander.seguidores.models.Response;
+import com.angelsantander.seguidores.models.remote.User;
 import com.angelsantander.seguidores.services.SeguidoresService;
 @RestController
 @RequestMapping(path = "api/v1/seguidores")
@@ -26,4 +27,14 @@ public class SeguidoresController {
 		response.put("status", "200");
 		return response;
 	}
+	
+	@PostMapping("/{id}/datos")
+	public Map<String,Object> getSeguidoresDatos(@PathVariable(name = "id") int id){
+		Map<String,Object> response = new HashMap<>();
+		List<User> lista_seguidores = seguidores_service.getAllDatosSeguidores(id);
+		response.put("data", lista_seguidores);
+		response.put("status", "200");
+		return response;
+	}
+	
 }

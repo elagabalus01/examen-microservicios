@@ -11,16 +11,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
-
+import com.angelsantander.admin_usuarios.models.ListaDto;
 import com.angelsantander.admin_usuarios.models.UserDto;
 import com.angelsantander.admin_usuarios.models.remote.Publicacion;
 import com.angelsantander.admin_usuarios.entity.User;
 
 import com.angelsantander.admin_usuarios.services.AdminUsuarioService;
+import com.angelsantander.admin_usuarios.models.remote.ComentarioDto;
 
 @RestController
 @RequestMapping("api/v1/usuario")
@@ -87,4 +88,29 @@ public class AdminUsuarioController {
 		response.put("data","Publicando: "+contenido);
 		return response;
 	}
+	
+	@PostMapping("/comentar_publicacion")
+	public Map<String,Object> comentar_publicacion(@RequestBody String comentario){
+		Map<String, Object> response = new HashMap<>();
+		//System.out.print(comentario);
+		//System.out.print(comentario.getContenido());
+		response.put("status","200");
+		user_service.comentar_publicacion(comentario);
+		response.put("data",comentario);
+		return response;
+	}
+
+	@PostMapping("/lista_usuarios")
+	public Map<String,Object> lista_usuarios(@RequestBody ListaDto ids){
+		Map<String, Object> response = new HashMap<>();
+		
+		List<User> lista_usuarios = new ArrayList<>();
+		user_service.lista_usuarios(ids.getIds_list()).forEach(lista_usuarios::add);
+		response.put("status","200");
+		response.put("data",lista_usuarios);
+		return response;
+	}
+	
+
+	
 }
